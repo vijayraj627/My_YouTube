@@ -10,8 +10,14 @@ const Header = () =>{
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        
+        console.log(suggestions)
+    }
+
     useEffect(()=>{
-        console.log(search);
+        // console.log(search);
 
         const timer = setTimeout(()=>{
             suggestionsAPI();
@@ -51,7 +57,8 @@ const Header = () =>{
                 <img onClick={handleHomeClick}className="h-12 cursor-pointer" src="https://1000logos.net/wp-content/uploads/2017/05/Youtube-logo.jpg" alt="Youtube Logo"/>
             </div>
             <div className="col-span-9">
-                <div>
+
+                <form onSubmit={handleClick}>
                     <input type="text" placeholder="Search" value={search} 
                     onChange = {(e)=>{
                         setSearch(e.target.value);
@@ -61,8 +68,9 @@ const Header = () =>{
                     onBlur={()=>setShowSuggestions(false)} 
                     
                     className="w-1/2 border-2 rounded-l-full p-2"/>
-                    <button className="border-2 rounded-r-full p-2 border-l-0 bg-gray-100">🔍</button>
-                </div>
+                    <button type="submit" className="border-2 rounded-r-full p-2 border-l-0 bg-gray-100">🔍</button>
+                </form>
+
                 {showSuggestions && <div className="absolute bg-white w-[34rem] p-2 m-0 rounded-xl shadow-lg">
                     {suggestions.map((item,i)=>(
                         <ul key={i}>

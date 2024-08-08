@@ -32,7 +32,7 @@ const VideoContainer = () =>{
     return(
         <div className="flex flex-wrap">
             {video.map((item,i)=>(
-                <Link  key={item.id} to={"/watch?v="+item.id} onClick={collapseSideBar}><VideoCart video = {item}/></Link>
+                <Link  key={item.id} to={"/watch?v="+item.id} className="hover:bg-zinc-300" onClick={collapseSideBar}><VideoCart video = {item}/></Link>
             ))}
             
         </div>
